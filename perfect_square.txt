@@ -1,0 +1,9 @@
+class Solution {
+public:
+    bool isPerfectSquare(int x) {
+         double sr = sqrt(x); 
+  
+         return ((sr - floor(sr)) == 0);
+        
+    }
+};
