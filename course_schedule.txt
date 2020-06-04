@@ -1,0 +1,43 @@
+class Solution {
+public:
+    bool xxxx(vector<int> a[], bool b[], bool c[], int s)
+    {
+        b[s]=true;
+        c[s]=true;
+        for(auto x:a[s])
+        {
+            if(b[x]==false && xxxx(a,b,c,x))
+                return true;
+            else if(c[x]==true)
+                return true;
+
+        }
+        c[s]=false;
+        return false;
+    }
+    bool canFinish(int n, vector<vector<int>>& p) {
+        int m=p.size();
+        vector<int> v[n];
+        
+        for(int i=0 ; i<m ; i++)
+        {
+            v[p[i][0]].push_back(p[i][1]);
+        }
+        bool b[n],c[n];
+        for(int i=0 ; i<n ; i++)
+        {
+            b[i]=false;
+            c[i]=false;
+        }
+        for(int i=0 ; i<n ; i++)
+        {
+            if(b[i]==false)
+            {
+                if(xxxx(v,b,c,i)==true)
+                    return false;
+            }
+        }
+        return true;
+
+        }
+};
