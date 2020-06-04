@@ -1,0 +1,1 @@
+This repository contains the solutions of various problems that were asked in the LEETCODE MAY CHALLENGE 2020.
