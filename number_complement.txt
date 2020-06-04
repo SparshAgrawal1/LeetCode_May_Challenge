@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int findComplement(int num) {
+        int c;
+        int d; 
+        int e=0;
+        int i=0;
+        while(num>0)
+        {
+            c=num%2;
+            num=num/2;
+            if(c==1)
+                c=0;
+            else
+                c=1;
+            d = pow(2,i)*c;
+            e=e+d;
+            i++;
+        }
+        return e;
+        
+    }
+};
