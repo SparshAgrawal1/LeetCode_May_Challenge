@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#include <algorithm>
+#include <string.h>
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> v;
+        map<int,int> m1,m2;
+        int n = s.length();
+        int m = p.length();
+        int res=0;
+        int curr=0;
+        for(int i=0 ; i<m ; i++)
+        {
+            m1[p[i]]++;
+            m2[s[i]]++;
+            res = res + p[i];
+            curr = curr + s[i];
+        }
+        if(curr==res && m2==m1)
+        {
+            v.push_back(0);
+        }
+        int ans=1;
+        for(int i=m ; i<n ; i++)
+        {
+            curr = curr + s[i] - s[i-m];
+            m2[s[i-m]]--;
+            if(m2[s[i-m]]==0)
+                m2.erase(s[i-m]);
+            m2[s[i]]++;
+            if(curr==res && m2==m1)
+            {
+                v.push_back(ans);
+            }
+            ans++;
+        }
+        return v;
+        
+        
+    }
+};
