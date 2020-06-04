@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        
+        
+        int n = coordinates.size();
+        if(n==0 || n==1)
+            return false;
+        if(n==2)
+            return true;
+        int a = coordinates[1][0] - coordinates[0][0];
+        int b = coordinates[1][1] - coordinates[0][1];
+        float res = (float)b/a;
+        for(int i=2 ; i<n ; i++)
+        {
+            a = coordinates[i][0] - coordinates[i-1][0];
+            b = coordinates[i][1] - coordinates[i-1][1];
+            float curr = (float)b/a;
+            if(curr!=res)
+                return false;
+        }
+        return true;
+        
+    }
+};
